@@ -1,0 +1,356 @@
+---
+// components/Navbar.astro
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo/Brand -->
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">tukangdecant</a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="navbar-menu">
+      <div class="navbar-item">
+        <a href="/" class="nav-link">Home</a>
+      </div>
+
+      <div class="navbar-item dropdown">
+        <button class="dropdown-btn">
+          Product
+          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+            <a href="/product/all" class="active">All Perfumes</a>  
+          <a href="/product/men">Men's Perfume</a>
+          <a href="/product/women">Women's Perfume</a>
+          <a href="/product/unisex">Unisex Perfume</a>
+          <a href="/product/gift-sets">Gift Sets</a>
+        </div>
+      </div>
+
+      <div class="navbar-item">
+        <a href="/about" class="nav-link">About</a>
+      </div>
+
+      <div class="navbar-item">
+        <a href="/contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+
+    <!-- Right Side Actions -->
+    <div class="navbar-actions">
+      <!-- Shopping Cart Icon -->
+      <button class="cart-btn" aria-label="Shopping Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count">0</span>
+      </button>
+      
+      <button class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+      </button>
+      
+      <div class="auth-section">
+        <button class="user-btn" aria-label="User menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+        <span class="auth-text">Sign In/Sign Up</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: #222222;
+    border-bottom: 1px solid #BFA181;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .brand-link {
+    color: #F8F6F4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .brand-link:hover {
+    color: #BFA181;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar-item {
+    position: relative;
+  }
+
+  .dropdown-btn {
+    background: none;
+    border: none;
+    color: #F8F6F4;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dropdown-btn:hover {
+    background-color: #181818;
+    color: #BFA181;
+  }
+
+  .dropdown-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+    stroke: #BFA181;
+  }
+
+  .dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #F8F6F4;
+    border: 1px solid #BFA181;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(34, 34, 34, 0.15);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    color: #222222;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #BFA181;
+    color: #222222;
+  }
+
+  .dropdown-content a:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .dropdown-content a:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .nav-link {
+    color: #F8F6F4;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+  }
+
+  .nav-link:hover {
+    background-color: #181818;
+    color: #BFA181;
+  }
+
+  .cart-btn {
+    background: none;
+    border: none;
+    color: #F8F6F4;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    position: relative;
+  }
+
+  .cart-btn:hover {
+    background-color: #181818;
+    color: #BFA181;
+  }
+
+  .cart-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: #BFA181;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #BFA181;
+    color: #222222;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border: 2px solid #F8F6F4;
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-btn {
+    background: none;
+    border: none;
+    color: #F8F6F4;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background-color: #181818;
+    color: #BFA181;
+  }
+
+  .search-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: #BFA181;
+  }
+
+  .user-btn {
+    background: none;
+    border: none;
+    color: #F8F6F4;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .user-btn:hover {
+    background-color: #181818;
+    color: #BFA181;
+  }
+
+  .user-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: #BFA181;
+  }
+
+  .auth-text {
+    color: #F8F6F4;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0 15px;
+    }
+    
+    .navbar-menu {
+      gap: 1rem;
+    }
+    
+    .auth-text {
+      display: none;
+    }
+    
+    .dropdown-btn {
+      font-size: 0.9rem;
+      padding: 6px 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .navbar-menu {
+      display: none;
+    }
+    
+    .navbar-container {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target as Node)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  });
+
+  // Handle mobile menu toggle (if needed)
+  const searchBtn = document.querySelector('.search-btn');
+  searchBtn?.addEventListener('click', () => {
+    // Add search functionality here
+    console.log('Search clicked');
+  });
+
+  const userBtn = document.querySelector('.user-btn');
+  userBtn?.addEventListener('click', () => {
+    // Add user menu functionality here
+    console.log('User menu clicked');
+  });
+</script>

@@ -1,12 +1,396 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// pages/index.astro
 import Layout from '../layouts/Layout.astro';
-import Product from '../components/product/product.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar/Navbar.astro';
 ---
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
 <Layout>
-	<Product />
+  <Navbar />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover Your Perfect Scent</h1>
+        <p>Explore our premium collection of perfumes for every occasion</p>
+        <a href="/product" class="cta-button">Shop Now</a>
+      </div>
+      <div class="hero-image">
+        <div class="hero-carousel">
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <img src="/images/dreamscape.jpeg" alt="Dreamscape 1" class="carousel-img zoomed active" />
+          <img src="/images/hawas-ice.jpg" alt="Dreamscape 2" class="carousel-img" />
+          <img src="/images/fleur-blossom.jpg" alt="Dreamscape 3" class="carousel-img" />
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+      <div class="container">
+        <h2>Featured Products</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-image"></div>
+            <h3>Elegant Rose</h3>
+            <p class="price">$89.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <div class="product-image"></div>
+            <h3>Ocean Breeze</h3>
+            <p class="price">$79.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <div class="product-image"></div>
+            <h3>Midnight Noir</h3>
+            <p class="price">$99.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <h2>Crafted with Passion</h2>
+          <p>For over 20 years, we've been creating exceptional fragrances that capture the essence of luxury and elegance. Each perfume is carefully crafted using the finest ingredients from around the world.</p>
+          <a href="/about" class="learn-more">Learn More</a>
+        </div>
+        <div class="about-image">
+          <div class="fragrance-lab"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    color: #222222;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #444444;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+    color: #222222;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+    color: #181818;
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-hero-img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px 20px 40px 40px;
+    box-shadow: 0 10px 30px rgba(34, 34, 34, 0.10);
+    background: #F8F6F4;
+    display: block;
+  }
+
+  .featured-products {
+    padding: 4rem 2rem;
+    background: #F8F6F4;
+    border-top: 1px solid #E3E3E3;
+    border-bottom: 1px solid #E3E3E3;
+  }
+
+  .featured-products h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #222222;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    border-bottom: 2px solid #BFA181;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(34, 34, 34, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #E3E3E3;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(34, 34, 34, 0.15);
+    border-color: #BFA181;
+  }
+
+  .product-image {
+    width: 120px;
+    height: 180px;
+    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
+    border-radius: 15px 15px 30px 30px;
+    margin: 0 auto 1rem;
+    border: 2px solid #BFA181;
+  }
+
+  .product-card h3 {
+    color: #222222;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #BFA181;
+    margin-bottom: 1rem;
+  }
+
+  .add-to-cart {
+    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+    color: #222222;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
+  }
+
+  .add-to-cart:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+    color: #181818;
+  }
+
+  .about-preview {
+    padding: 4rem 2rem;
+    background: #fff;
+  }
+
+  .about-preview .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .about-content {
+    flex: 1;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+    color: #222222;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content p {
+    font-size: 1.1rem;
+    color: #444444;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .learn-more {
+    color: #BFA181;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid #BFA181;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .learn-more:hover {
+    color: #222222;
+    border-color: #222222;
+  }
+
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .fragrance-lab {
+    width: 250px;
+    height: 200px;
+    background: linear-gradient(135deg, #E3E3E3 0%, #F8F6F4 100%);
+    border-radius: 15px;
+    position: relative;
+    border: 2px solid #BFA181;
+  }
+
+  .fragrance-lab::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(191, 161, 129, 0.08);
+    border-radius: 10px;
+  }
+
+  .hero-content h1,
+  .featured-products h2,
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  body, .hero-content p, .cta-button, .product-card, .price, .add-to-cart, .about-content p, .learn-more {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .about-preview .container {
+      flex-direction: column;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-carousel {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-img {
+    position: absolute;
+    width: 320px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 20px 20px 40px 40px;
+    box-shadow: 0 10px 30px rgba(34,34,34,0.10);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    background: #F8F6F4;
+    z-index: 1;
+  }
+  .carousel-img.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .carousel-img.zoomed {
+    transform: none;
+  }
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #BFA181;
+    color: #222;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0.8;
+  }
+  .carousel-btn.prev { left: -48px; }
+  .carousel-btn.next { right: -48px; }
+</style>
+
+<script>
+  const images = Array.from(document.querySelectorAll('.carousel-img'));
+  let current = 0;
+
+  function showImage(idx) {
+    images.forEach((img, i) => img.classList.toggle('active', i === idx));
+  }
+
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
+  }
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+  }
+</script>
