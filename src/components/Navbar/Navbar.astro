@@ -6,7 +6,7 @@
   <div class="navbar-container">
     <!-- Logo/Brand -->
     <div class="navbar-brand">
-      <a href="/" class="brand-link">PerfumeStore</a>
+      <a href="/" class="brand-link">Tukang Decant</a>
     </div>
 
     <!-- Navigation Menu -->
@@ -73,8 +73,8 @@
 
 <style>
   .navbar {
-    background: linear-gradient(135deg, #2d1b69 0%, #4a148c 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #222222;
+    border-bottom: 1px solid #BFA181;
     padding: 0;
     position: sticky;
     top: 0;
@@ -97,13 +97,13 @@
   }
 
   .brand-link {
-    color: white;
+    color: #F8F6F4;
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .brand-link:hover {
-    color: #e1bee7;
+    color: #BFA181;
   }
 
   .navbar-menu {
@@ -119,7 +119,7 @@
   .dropdown-btn {
     background: none;
     border: none;
-    color: white;
+    color: #F8F6F4;
     font-size: 1rem;
     cursor: pointer;
     padding: 8px 12px;
@@ -127,17 +127,19 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .dropdown-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #BFA181;
   }
 
   .dropdown-icon {
     width: 16px;
     height: 16px;
     transition: transform 0.3s ease;
+    stroke: #BFA181;
   }
 
   .dropdown:hover .dropdown-icon {
@@ -148,10 +150,10 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
-    border: 1px solid #e0e0e0;
+    background: #F8F6F4;
+    border: 1px solid #BFA181;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(34, 34, 34, 0.15);
     min-width: 200px;
     opacity: 0;
     visibility: hidden;
@@ -169,13 +171,15 @@
   .dropdown-content a {
     display: block;
     padding: 12px 16px;
-    color: #333;
+    color: #222222;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0;
   }
 
   .dropdown-content a:hover {
-    background-color: #f5f5f5;
+    background-color: #BFA181;
+    color: #222222;
   }
 
   .dropdown-content a:first-child {
@@ -187,22 +191,23 @@
   }
 
   .nav-link {
-    color: white;
+    color: #F8F6F4;
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: block;
   }
 
   .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #BFA181;
   }
 
   .cart-btn {
     background: none;
     border: none;
-    color: white;
+    color: #F8F6F4;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
@@ -211,20 +216,22 @@
   }
 
   .cart-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #BFA181;
   }
 
   .cart-btn svg {
     width: 20px;
     height: 20px;
+    stroke: #BFA181;
   }
 
   .cart-count {
     position: absolute;
     top: 0;
     right: 0;
-    background: #ff4444;
-    color: white;
+    background: #BFA181;
+    color: #222222;
     border-radius: 50%;
     width: 18px;
     height: 18px;
@@ -233,6 +240,7 @@
     justify-content: center;
     font-size: 0.7rem;
     font-weight: bold;
+    border: 2px solid #F8F6F4;
   }
 
   .navbar-actions {
@@ -244,7 +252,7 @@
   .search-btn {
     background: none;
     border: none;
-    color: white;
+    color: #F8F6F4;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
@@ -252,18 +260,20 @@
   }
 
   .search-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #BFA181;
   }
 
   .search-btn svg {
     width: 20px;
     height: 20px;
+    stroke: #BFA181;
   }
 
   .user-btn {
     background: none;
     border: none;
-    color: white;
+    color: #F8F6F4;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
@@ -271,16 +281,18 @@
   }
 
   .user-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #BFA181;
   }
 
   .user-btn svg {
     width: 20px;
     height: 20px;
+    stroke: #BFA181;
   }
 
   .auth-text {
-    color: white;
+    color: #F8F6F4;
     font-size: 0.9rem;
     white-space: nowrap;
   }

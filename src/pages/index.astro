@@ -4,6 +4,10 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar/Navbar.astro';
 ---
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
 <Layout>
   <Navbar />
   <main>
@@ -64,7 +68,7 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
 <style>
   .hero {
-    background: linear-gradient(135deg, #f8f4ff 0%, #e8d8ff 100%);
+    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
     padding: 4rem 2rem;
     display: flex;
     align-items: center;
@@ -80,31 +84,35 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
   .hero-content h1 {
     font-size: 3rem;
-    color: #2d1b69;
+    color: #222222;
     margin-bottom: 1rem;
     line-height: 1.2;
   }
 
   .hero-content p {
     font-size: 1.2rem;
-    color: #666;
+    color: #444444;
     margin-bottom: 2rem;
   }
 
   .cta-button {
-    background: linear-gradient(135deg, #2d1b69 0%, #4a148c 100%);
-    color: white;
+    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+    color: #222222;
     padding: 1rem 2rem;
     border: none;
     border-radius: 8px;
     font-size: 1.1rem;
     text-decoration: none;
     display: inline-block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
   }
 
   .cta-button:hover {
     transform: translateY(-2px);
+    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+    color: #181818;
   }
 
   .hero-image {
@@ -117,9 +125,9 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .perfume-bottle {
     width: 200px;
     height: 300px;
-    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
     border-radius: 20px 20px 40px 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(34, 34, 34, 0.10);
     position: relative;
   }
 
@@ -131,13 +139,13 @@ import Navbar from '../components/Navbar/Navbar.astro';
     transform: translateX(-50%);
     width: 60px;
     height: 40px;
-    background: #2d1b69;
+    background: #BFA181;
     border-radius: 10px;
   }
 
   .featured-products {
     padding: 4rem 2rem;
-    background: white;
+    background: #F8F6F4;
   }
 
   .container {
@@ -148,7 +156,7 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .featured-products h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: #2d1b69;
+    color: #222222;
     margin-bottom: 3rem;
   }
 
@@ -159,28 +167,32 @@ import Navbar from '../components/Navbar/Navbar.astro';
   }
 
   .product-card {
-    background: white;
-    border-radius: 12px;
+    background: #fff;
+    border-radius: 16px;
     padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(34, 34, 34, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #E3E3E3;
   }
 
   .product-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(34, 34, 34, 0.15);
+    border-color: #BFA181;
   }
 
   .product-image {
     width: 120px;
     height: 180px;
-    background: linear-gradient(135deg, #f8f4ff 0%, #e8d8ff 100%);
+    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
     border-radius: 15px 15px 30px 30px;
     margin: 0 auto 1rem;
+    border: 2px solid #BFA181;
   }
 
   .product-card h3 {
-    color: #2d1b69;
+    color: #222222;
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
   }
@@ -188,28 +200,32 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #4a148c;
+    color: #BFA181;
     margin-bottom: 1rem;
   }
 
   .add-to-cart {
-    background: linear-gradient(135deg, #2d1b69 0%, #4a148c 100%);
-    color: white;
+    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+    color: #222222;
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
   }
 
   .add-to-cart:hover {
     transform: translateY(-2px);
+    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+    color: #181818;
   }
 
   .about-preview {
     padding: 4rem 2rem;
-    background: #f8f4ff;
+    background: #fff;
   }
 
   .about-preview .container {
@@ -224,27 +240,28 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
   .about-content h2 {
     font-size: 2.5rem;
-    color: #2d1b69;
+    color: #222222;
     margin-bottom: 1.5rem;
   }
 
   .about-content p {
     font-size: 1.1rem;
-    color: #666;
+    color: #444444;
     line-height: 1.6;
     margin-bottom: 2rem;
   }
 
   .learn-more {
-    color: #4a148c;
+    color: #BFA181;
     text-decoration: none;
     font-weight: bold;
-    border-bottom: 2px solid #4a148c;
-    transition: color 0.3s ease;
+    border-bottom: 2px solid #BFA181;
+    transition: color 0.3s ease, border-color 0.3s ease;
   }
 
   .learn-more:hover {
-    color: #2d1b69;
+    color: #222222;
+    border-color: #222222;
   }
 
   .about-image {
@@ -256,9 +273,10 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .fragrance-lab {
     width: 250px;
     height: 200px;
-    background: linear-gradient(135deg, #2d1b69 0%, #4a148c 100%);
+    background: linear-gradient(135deg, #E3E3E3 0%, #F8F6F4 100%);
     border-radius: 15px;
     position: relative;
+    border: 2px solid #BFA181;
   }
 
   .fragrance-lab::before {
@@ -268,8 +286,18 @@ import Navbar from '../components/Navbar/Navbar.astro';
     left: 20px;
     right: 20px;
     bottom: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(191, 161, 129, 0.08);
     border-radius: 10px;
+  }
+
+  .hero-content h1,
+  .featured-products h2,
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  body, .hero-content p, .cta-button, .product-card, .price, .add-to-cart, .about-content p, .learn-more {
+    font-family: 'Poppins', sans-serif;
   }
 
   /* Responsive Design */
