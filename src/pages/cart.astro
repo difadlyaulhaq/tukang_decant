@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="cart-main">
+    <h1>Your Cart</h1>
+    <div class="cart-list"></div>
+  </main>
+</Layout>
+
+<script>
+  function formatRupiah(angka) {
+    return 'Rp' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cartList = document.querySelector('.cart-list');
+    if (!cartList) return;
+    if (!cart.length) {
+      cartList.innerHTML = '<p>Your cart is currently empty.</p><a href="/product" class="cart-shop-btn">Continue Shopping</a>';
+      return;
+    }
+    let html = `<form id="cart-form"><table class="cart-table"><thead><tr><th></th><th>Preview</th><th>Product</th><th>ML</th><th>Price</th><th>Qty</th><th>Subtotal</th><th>Delete</th></tr></thead><tbody>`;
+    cart.forEach((item, idx) => {
+      const subtotal = item.price * item.qty;
+      const imgSrc = item.image && item.image !== 'undefined' ? item.image : '/images/placeholder.jpg';
+      html += `<tr>
+        <td><input type="checkbox" class="cart-check" data-idx="${idx}" checked></td>
+        <td><img src="${imgSrc}" alt="${item.name}" class="cart-img-preview" /></td>
+        <td>${item.name}</td>
+        <td>${item.ml} ml</td>
+        <td>${formatRupiah(item.price)}</td>
+        <td>${item.qty}</td>
+        <td class="cart-subtotal">${formatRupiah(subtotal)}</td>
+        <td><button type="button" class="cart-delete-btn" data-idx="${idx}">🗑️</button></td>
+      </tr>`;
+    });
+    html += `</tbody></table>
+      <div class="cart-total">Total: <strong id="cart-total-val"></strong></div>
+      <button type="submit" class="cart-checkout-btn">Checkout</button>
+      <a href="/product" class="cart-shop-btn">Continue Shopping</a></form>`;
+    cartList.innerHTML = html;
+    updateTotal();
+    document.querySelectorAll('.cart-check').forEach(cb => {
+      cb.addEventListener('change', updateTotal);
+    });
+    document.querySelectorAll('.cart-delete-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const idx = parseInt(this.dataset.idx, 10);
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.splice(idx, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      });
+    });
+    const cartForm = document.getElementById('cart-form');
+    if (cartForm) {
+      cartForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Checkout feature coming soon!');
+      });
+    }
+  }
+
+  function updateTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let total = 0;
+    document.querySelectorAll('.cart-check').forEach((cb, idx) => {
+      if ((cb instanceof HTMLInputElement) && cb.checked) {
+        const item = cart[idx];
+        total += item.price * item.qty;
+      }
+    });
+    const totalVal = document.getElementById('cart-total-val');
+    if (totalVal) totalVal.textContent = formatRupiah(total);
+  }
+
+  renderCart();
+</script>
+
+<style>
+.cart-main {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  padding: 3rem 1rem 3rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cart-main h1 {
+  font-family: 'Playfair Display', serif;
+  color: #BFA181;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #BFA181;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+.cart-list {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(191,161,129,0.10);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  width: 100%;
+  border: 1.5px solid #f0e8dd;
+}
+.cart-list p {
+  color: #222;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.cart-list .cart-shop-btn {
+  background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+  color: #222;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.08);
+  display: inline-block;
+}
+.cart-list .cart-shop-btn:hover {
+  background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+  color: #181818;
+}
+.cart-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.cart-table th, .cart-table td {
+  border-bottom: 1px solid #E3E3E3;
+  padding: 0.7rem 0.5rem;
+  text-align: left;
+  font-size: 1rem;
+  vertical-align: middle;
+  background: #fff;
+}
+.cart-table th {
+  color: #BFA181;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  background: #f8f6f4;
+  border-radius: 8px 8px 0 0;
+}
+.cart-table td:nth-child(2) {
+  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+.cart-img-preview {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.10);
+  background: #F8F6F4;
+  border: 1.5px solid #e5d3b3;
+  display: block;
+  margin: 0 auto;
+}
+.cart-check {
+  width: 18px;
+  height: 18px;
+  accent-color: #BFA181;
+}
+.cart-checkout-btn {
+  background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+  color: #222;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.08);
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.cart-checkout-btn:hover {
+  background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+  color: #181818;
+}
+.cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  color: #BFA181;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+.cart-delete-btn {
+  background: none;
+  border: none;
+  color: #BFA181;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+.cart-delete-btn:hover {
+  color: #ff4444;
+  background: #f8f6f4;
+}
+</style> 

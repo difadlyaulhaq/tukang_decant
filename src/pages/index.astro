@@ -32,7 +32,6 @@ import Navbar from '../components/Navbar/Navbar.astro';
       <div class="container">
         <h2>Featured Products</h2>
         <div class="products-grid">
-
           <div class="product-card" data-price-2ml="15000" data-price-5ml="30000" data-price-10ml="50000">
             <div class="product-image">
               <img src="/images/dreamscape.jpeg" alt="Mykonos Dreamscape">
@@ -237,6 +236,11 @@ import Navbar from '../components/Navbar/Navbar.astro';
   productCards.forEach(card => {
     const priceElement = card.querySelector('.price');
     const sizeButtons = card.querySelectorAll('.ml-button[data-ml]');
+    const addToCartBtn = card.querySelector('.add-to-cart');
+    const brand = card.querySelector('.brand')?.textContent?.trim() || '';
+    const name = card.querySelector('.brand')?.textContent?.trim() || '';
+    const productName = card.querySelector('.product-name')?.textContent?.trim() || '';
+    const image = card.querySelector('.product-image img')?.getAttribute('src') || '';
 
     // Pastikan elemen harga ada
     if (!priceElement) return;
@@ -251,15 +255,53 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
         // Ambil ukuran dari atribut 'data-ml'
         const selectedSize = button.getAttribute('data-ml');
-        
         // Ambil harga dari atribut 'data-price-[ukuran]ml' pada kartu
         const price = card.getAttribute(`data-price-${selectedSize}ml`);
-
         // Jika harga ditemukan, perbarui teks pada elemen harga
         if (price) {
           priceElement.textContent = formatToRupiah(price);
         }
       });
     });
+
+    // Tambahkan event untuk tombol Add to Cart
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', () => {
+        // Ambil ukuran (ml) yang aktif
+        const activeMlBtn = card.querySelector('.ml-button.active');
+        const ml = activeMlBtn ? activeMlBtn.getAttribute('data-ml') || '2' : '2';
+        const price = card.getAttribute(`data-price-${ml}ml`) || '0';
+        // Nama produk dan brand
+        const brand = card.querySelector('.brand')?.textContent?.trim() || '';
+        const name = card.querySelector('.brand')?.textContent?.trim() || '';
+        const productName = card.querySelector('.product-name')?.textContent?.trim() || '';
+        // Gambar
+        const image = card.querySelector('.product-image img')?.getAttribute('src') || '';
+        // Struktur cart item
+        const cartItem = {
+          name: productName,
+          brand: brand,
+          image: image,
+          price: parseInt(price, 10),
+          ml: ml,
+          qty: 1
+        };
+        // Ambil cart dari localStorage
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        // Cek apakah produk dengan nama & ml yang sama sudah ada
+        const existingIdx = cart.findIndex(item => item.name === cartItem.name && item.ml === cartItem.ml);
+        if (existingIdx !== -1) {
+          cart[existingIdx].qty += 1;
+        } else {
+          cart.push(cartItem);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        // (Opsional) Notifikasi sederhana
+        addToCartBtn.textContent = 'Added!';
+        setTimeout(() => { addToCartBtn.textContent = 'ADD TO CART'; }, 1000);
+        // Trigger event supaya badge cart di navbar update
+        window.dispatchEvent(new Event('cart-updated'));
+      });
+    }
   });
 </script>
