@@ -11,7 +11,6 @@ import Navbar from '../components/Navbar/Navbar.astro';
 <Layout>
   <Navbar />
   <main>
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
         <h1>Discover Your Perfect Scent</h1>
@@ -29,105 +28,93 @@ import Navbar from '../components/Navbar/Navbar.astro';
       </div>
     </section>
 
-    <!-- Featured Products -->
     <section class="featured-products">
-    <div class="container">
+      <div class="container">
         <h2>Featured Products</h2>
         <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/images/dreamscape.jpeg" alt="Creed Aventus Eau de Parfum for Men">
-                </div>
-                <div class="product-info">
-                    <p class="brand">dreamscape</p>
-                    <h3 class="product-name">dreamscape Eau de Parfum for Men</h3>
-                    <p class="price">$10.79</p>
-                    <div class="ml-options">
-                        <button class="ml-button" data-ml="2">2ml</button>
-                        <button class="ml-button" data-ml="3">3ml</button>
-                        <button class="ml-button" data-ml="5">5ml</button>
-                        <button class="ml-button" data-ml="10">10ml</button>
-                        <button class="ml-button more-options">+</button>
-                    </div>
-                    <div class="actions">
-                        <button class="add-to-cart">ADD TO CART</button>
-                        <div class="likes">
-                            ❤️ <span class="like-count">1376</span>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">100</span>)
-                    </div>
-                </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/images/hawas-ice.jpg" alt="Parfums de Marly Layton Eau de Parfum for Men">
-                </div>
-                <div class="product-info">
-                    <p class="brand">Hawas Ice</p>
-                    <h3 class="product-name">Hawas Ice Eau de Parfum for Men</h3>
-                    <p class="price">$9.79</p>
-                    <div class="ml-options">
-                        <button class="ml-button" data-ml="2">2ml</button>
-                        <button class="ml-button" data-ml="3">3ml</button>
-                        <button class="ml-button" data-ml="5">5ml</button>
-                        <button class="ml-button" data-ml="10">10ml</button>
-                        <button class="ml-button more-options">+</button>
-                    </div>
-                    <div class="actions">
-                        <button class="add-to-cart">ADD TO CART</button>
-                        <div class="likes">
-                            ❤️ <span class="like-count">1723</span>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">97</span>)
-                    </div>
-                </div>
+          <div class="product-card" data-price-2ml="15000" data-price-5ml="30000" data-price-10ml="50000">
+            <div class="product-image">
+              <img src="/images/dreamscape.jpeg" alt="Mykonos Dreamscape">
             </div>
+            <div class="product-info">
+              <p class="brand">Mykonos Dreamscape</p>
+              <h3 class="product-name">Eau de Parfum for Men</h3>
+              <p class="price">Rp 15.000</p>
+              <div class="ml-options">
+                <button class="ml-button active" data-ml="2">2ml</button>
+                <button class="ml-button" data-ml="5">5ml</button>
+                <button class="ml-button" data-ml="10">10ml</button>
+                <!-- <button class="ml-button more-options">+</button> -->
+              </div>
+              <div class="actions">
+                <button class="add-to-cart">ADD TO CART</button>
+                <div class="likes">❤️ <span class="like-count">1376</span></div>
+              </div>
+              <div class="rating">
+                <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">100</span>)
+              </div>
+            </div>
+          </div>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/images/fleur-blossom.jpg" alt="Maison Francis Kurkdjian Baccarat Rouge 540 Eau de Parfum Unisex">
-                </div>
-                <div class="product-info">
-                    <p class="brand">Fleur Blossom</p>
-                    <h3 class="product-name">Fleur Blossom Eau de Parfum For Women</h3>
-                    <p class="price">$13.79</p>
-                    <div class="ml-options">
-                        <button class="ml-button" data-ml="2">2ml</button>
-                        <button class="ml-button" data-ml="3">3ml</button>
-                        <button class="ml-button" data-ml="5">5ml</button>
-                        <button class="ml-button" data-ml="10">10ml</button>
-                        <button class="ml-button more-options">+</button>
-                    </div>
-                    <div class="actions">
-                        <button class="add-to-cart">ADD TO CART</button>
-                        <div class="likes">
-                            ❤️ <span class="like-count">1207</span>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">62</span>)
-                    </div>
-                </div>
+          <div class="product-card" data-price-2ml="25000" data-price-5ml="60000" data-price-10ml="125000">
+            <div class="product-image">
+              <img src="/images/hawas-ice.jpg" alt="Hawas Ice">
             </div>
+            <div class="product-info">
+              <p class="brand">Hawas Ice</p>
+              <h3 class="product-name">Eau de Parfum for Men</h3>
+              <p class="price">Rp 25.000</p>
+              <div class="ml-options">
+                <button class="ml-button active" data-ml="2">2ml</button>
+                <button class="ml-button" data-ml="5">5ml</button>
+                <button class="ml-button" data-ml="10">10ml</button>
+                <!-- <button class="ml-button more-options">+</button> -->
+              </div>
+              <div class="actions">
+                  <button class="add-to-cart">ADD TO CART</button>
+                  <div class="likes">❤️ <span class="like-count">1723</span></div>
+              </div>
+              <div class="rating">
+                  <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">97</span>)
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card" data-price-2ml="15000" data-price-5ml="30000" data-price-10ml="50000">
+            <div class="product-image">
+              <img src="/images/fleur-blossom.jpg" alt="Fleur Blossom">
+            </div>
+            <div class="product-info">
+              <p class="brand">Fleur Blossom</p>
+              <h3 class="product-name">Eau de Parfum For Women</h3>
+              <p class="price">Rp 15.000</p>
+              <div class="ml-options">
+                <button class="ml-button active" data-ml="2">2ml</button>
+                <button class="ml-button" data-ml="5">5ml</button>
+                <button class="ml-button" data-ml="10">10ml</button>
+                <!-- <button class="ml-button more-options">+</button> -->
+              </div>
+              <div class="actions">
+                  <button class="add-to-cart">ADD TO CART</button>
+                  <div class="likes">❤️ <span class="like-count">1207</span></div>
+              </div>
+              <div class="rating">
+                  <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">62</span>)
+              </div>
+            </div>
+          </div>
 
         </div>
-    </div>
-</section>
-    <!-- About Preview -->
+      </div>
+    </section>
+    
     <section class="about-preview">
       <div class="container">
         <div class="about-content">
           <h2>Crafted with Passion</h2>
-          <p>For over 20 years, we've been creating exceptional fragrances that capture the essence of luxury and elegance. Each perfume is carefully crafted using the finest ingredients from around the world.</p>
+          <p>For over 20 years, we've been creating exceptional fragrances that capture the essence of luxury and elegance.</p>
           <a href="/about" class="learn-more">Learn More</a>
-        </div>
-        <div class="about-image">
-          <div class="fragrance-lab"></div>
         </div>
       </div>
     </section>
@@ -135,477 +122,144 @@ import Navbar from '../components/Navbar/Navbar.astro';
 </Layout>
 
 <style>
-  .hero {
-    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
-    padding: 6rem 2rem 4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    min-height: 10vh;
-    margin: 0 auto;
-    gap: 4rem;
+  :root {
+    --brand-color: #BFA181;
+    --brand-gradient: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+    --bg-light: #F8F6F4;
+    --bg-darker: #E3E3E3;
+    --text-dark: #222222;
+    --text-light: #444444;
   }
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column;
-      min-height: unset;
-      gap: 2rem;
-      padding: 3rem 1rem;
-    }
-  }
-
-  .hero-content {
-    flex: 1;
-  }
-
-  .hero-content h1 {
-    font-size: 3rem;
-    color: #222222;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .hero-content p {
-    font-size: 1.2rem;
-    color: #444444;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
-    color: #222222;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
-    color: #181818;
-  }
-
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main-hero-img {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 20px 20px 40px 40px;
-    box-shadow: 0 10px 30px rgba(34, 34, 34, 0.10);
-    background: #F8F6F4;
-    display: block;
-  }
-
-  .featured-products {
-    padding: 4rem 2rem;
-    background: #F8F6F4;
-    border-top: 1px solid #E3E3E3;
-    border-bottom: 1px solid #E3E3E3;
-  }
-
-  .featured-products h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #222222;
-    margin-bottom: 3rem;
-    letter-spacing: 1px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    border-bottom: 2px solid #BFA181;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
-
-.product-card {
-  background: #fff;
-  border-radius: 22px;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(191, 161, 129, 0.13);
-  border: 1.5px solid #f0e8dd;
-  transition: transform 0.22s, box-shadow 0.22s, border 0.22s;
-  position: relative;
-  overflow: hidden;
-}
-
-.product-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 18px 48px rgba(191, 161, 129, 0.19);
-  border-color: #e5d3b3;
-}
-.product-card:hover .product-image img {
-  transform: scale(1.07) rotate(-2deg);
-}
- .product-image {
-  width: 120px;
-  height: 180px;
-  margin: 0 auto 1.2rem;
-  border-radius: 18px 18px 32px 32px;
-  background: linear-gradient(135deg, #f8f6f4 0%, #e3e3e3 100%);
-  border: 2px solid #e5d3b3;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-	.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 16px rgba(191,161,129,0.08);
-}
-
-  .product-card h3 {
-    color: #222222;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-  }
-
-  .price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #BFA181;
-    margin-bottom: 1rem;
-  }
-  .badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.3em 0.9em;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(191,161,129,0.12);
-  letter-spacing: 0.5px;
-  z-index: 2;
-}
-
-.product-info .brand {
-  color: #bfa181;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
-  letter-spacing: 0.5px;
-}
-
-.product-card h3 {
-  color: #222;
-  margin-bottom: 0.5rem;
-  font-size: 1.15rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-}
-
-.price {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #bfa181;
-  margin-bottom: 1rem;
-}
-
-.ml-options {
-  margin-bottom: 1rem;
-}
-
-.ml-button {
-  background: #f8f6f4;
-  color: #bfa181;
-  border: 1px solid #e5d3b3;
-  border-radius: 6px;
-  padding: 0.3em 0.9em;
-  margin: 0 0.15em;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-}
-
-.ml-button.active,
-.ml-button:hover {
-  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
-  color: #fff;
-  border-color: #bfa181;
-}
-
-.add-to-cart {
-  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
-  color: #fff;
-  border: none;
-  padding: 0.7rem 1.7rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-}
-
-.add-to-cart:hover {
-  background: linear-gradient(90deg, #c9b37e 60%, #bfa181 100%);
-  color: #222;
-  transform: translateY(-2px) scale(1.04);
-}
-
-.likes {
-  margin-top: 0.5rem;
-  color: #bfa181;
-  font-size: 1rem;
-}
-
-.rating {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  color: #f5b041;
-  font-weight: 600;
-}
-
-  .add-to-cart {
-    background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
-    color: #222222;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
-  }
-
-  .add-to-cart:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
-    color: #181818;
-  }
-
-  .about-preview {
-    padding: 4rem 2rem;
-    background: #fff;
-  }
-
-  .about-preview .container {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  .about-content {
-    flex: 1;
-  }
-
-  .about-content h2 {
-    font-size: 2.5rem;
-    color: #222222;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-content p {
-    font-size: 1.1rem;
-    color: #444444;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  .learn-more {
-    color: #BFA181;
-    text-decoration: none;
-    font-weight: bold;
-    border-bottom: 2px solid #BFA181;
-    transition: color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .learn-more:hover {
-    color: #222222;
-    border-color: #222222;
-  }
-
-  .about-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .fragrance-lab {
-    width: 250px;
-    height: 200px;
-    background: linear-gradient(135deg, #E3E3E3 0%, #F8F6F4 100%);
-    border-radius: 15px;
-    position: relative;
-    border: 2px solid #BFA181;
-  }
-
-  .fragrance-lab::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background: rgba(191, 161, 129, 0.08);
-    border-radius: 10px;
-  }
-
-  .hero-content h1,
-  .featured-products h2,
-  .about-content h2 {
-    font-family: 'Playfair Display', serif;
-  }
-
-  body, .hero-content p, .cta-button, .product-card, .price, .add-to-cart, .about-content p, .learn-more {
-    font-family: 'Poppins', sans-serif;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .hero-content h1 {
-      font-size: 2rem;
-    }
-
-    .about-preview .container {
-      flex-direction: column;
-    }
-
-    .products-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .hero-carousel {
-    position: relative;
-    width: 360px; /* only slightly wider than image */
-    height: 480px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-  }
-  .carousel-img {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 320px;
-    height: 480px;
-    object-fit: cover;
-    border-radius: 20px 20px 40px 40px;
-    box-shadow: 0 10px 30px rgba(34,34,34,0.10);
-    opacity: 0.5;
-    transform: translateX(-50%) scale(0.85);
-    transition: opacity 0.5s, transform 0.5s;
-    background: #F8F6F4;
-    z-index: 1;
-  }
-  .carousel-img.active {
-    opacity: 1;
-    z-index: 2;
-    transform: translateX(-50%) scale(1);
-  }
-  .carousel-img.peek-left {
-    opacity: 0.7;
-    z-index: 1;
-    transform: translateX(-80%) scale(0.8); /* less peeking */
-  }
-  .carousel-img.peek-right {
-    opacity: 0.7;
-    z-index: 1;
-    transform: translateX(-20%) scale(0.8); /* less peeking */
-  }
-  .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #BFA181;
-    color: #222;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 3;
-    opacity: 0.8;
-  }
+  /* ... (Salin semua CSS Anda yang sudah ada di sini) ... */
+  .hero { background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-darker) 100%); padding: 6rem 2rem 4rem 2rem; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; min-height: 10vh; margin: 0 auto; gap: 4rem; }
+  @media (max-width: 900px) { .hero { flex-direction: column; min-height: unset; gap: 2rem; padding: 3rem 1rem; } }
+  .hero-content { flex: 1; }
+  .hero-content h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
+  .hero-content p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem; }
+  .cta-button { background: var(--brand-gradient); color: var(--text-dark); padding: 1rem 2rem; border: none; border-radius: 8px; font-size: 1.1rem; text-decoration: none; display: inline-block; transition: all 0.3s ease; font-weight: 700; box-shadow: 0 2px 8px rgba(191, 161, 129, 0.1); }
+  .cta-button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%); }
+  .hero-image { flex: 1; display: flex; justify-content: center; align-items: center; }
+  .featured-products { padding: 4rem 2rem; background: var(--bg-light); border-top: 1px solid var(--bg-darker); border-bottom: 1px solid var(--bg-darker); }
+  .featured-products h2 { text-align: center; font-size: 2.5rem; color: var(--text-dark); margin-bottom: 3rem; letter-spacing: 1px; font-family: 'Playfair Display', serif; font-weight: 700; border-bottom: 2px solid var(--brand-color); display: inline-block; padding-bottom: 0.5rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+  .product-card { background: #fff; border-radius: 22px; padding: 2rem 1.5rem 1.5rem 1.5rem; text-align: center; box-shadow: 0 8px 32px rgba(191, 161, 129, 0.13); border: 1.5px solid #f0e8dd; transition: transform 0.22s, box-shadow 0.22s, border 0.22s; position: relative; overflow: hidden; }
+  .product-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 18px 48px rgba(191, 161, 129, 0.19); border-color: #e5d3b3; }
+  .product-card:hover .product-image img { transform: scale(1.07) rotate(-2deg); }
+  .product-image { width: 120px; height: 180px; margin: 0 auto 1.2rem; border-radius: 18px 18px 32px 32px; background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-darker) 100%); border: 2px solid #e5d3b3; position: relative; overflow: hidden; transition: box-shadow 0.3s; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; transition: transform 0.3s; box-shadow: 0 4px 16px rgba(191,161,129,0.08); }
+  .product-info .brand { color: var(--brand-color); font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; letter-spacing: 0.5px; }
+  .product-card h3 { color: var(--text-dark); margin-bottom: 0.5rem; font-size: 1.15rem; font-family: 'Playfair Display', serif; font-weight: 700; height: 2.5em; overflow: hidden; }
+  .price { font-size: 1.3rem; font-weight: bold; color: var(--brand-color); margin-bottom: 1rem; }
+  .ml-options { margin-bottom: 1rem; }
+  .ml-button { background: var(--bg-light); color: var(--brand-color); border: 1px solid #e5d3b3; border-radius: 6px; padding: 0.3em 0.9em; margin: 0 0.15em; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .ml-button.active, .ml-button:hover { background: var(--brand-gradient); color: #fff; border-color: var(--brand-color); }
+  .actions { display: flex; justify-content: center; align-items: center; gap: 1rem; }
+  .add-to-cart { background: var(--brand-gradient); color: #fff; border: none; padding: 0.7rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; box-shadow: 0 2px 8px rgba(191, 161, 129, 0.1); transition: all 0.2s; }
+  .add-to-cart:hover { background: linear-gradient(90deg, #c9b37e 60%, #bfa181 100%); color: var(--text-dark); transform: translateY(-2px) scale(1.04); }
+  .likes { color: var(--brand-color); font-size: 1rem; }
+  .rating { margin-top: 0.8rem; font-size: 1rem; color: #f5b041; font-weight: 600; }
+  .about-preview { padding: 4rem 2rem; background: #fff; }
+  .about-preview .container { display: flex; align-items: center; justify-content: center; text-align: center; }
+  .about-content h2 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 1.5rem; }
+  .about-content p { font-size: 1.1rem; color: var(--text-light); line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .learn-more { color: var(--brand-color); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--brand-color); transition: color 0.3s, border-color 0.3s; }
+  .learn-more:hover { color: var(--text-dark); border-color: var(--text-dark); }
+  .hero-carousel { position: relative; width: 360px; height: 480px; margin: 0 auto; display: flex; align-items: center; justify-content: center; overflow: visible; }
+  .carousel-img { position: absolute; left: 50%; top: 0; width: 320px; height: 480px; object-fit: cover; border-radius: 20px 20px 40px 40px; box-shadow: 0 10px 30px rgba(34,34,34,0.10); opacity: 0.5; transform: translateX(-50%) scale(0.85); transition: opacity 0.5s, transform 0.5s; background: var(--bg-light); z-index: 1; }
+  .carousel-img.active { opacity: 1; z-index: 2; transform: translateX(-50%) scale(1); }
+  .carousel-img.peek-left { opacity: 0.7; z-index: 1; transform: translateX(-80%) scale(0.8); }
+  .carousel-img.peek-right { opacity: 0.7; z-index: 1; transform: translateX(-20%) scale(0.8); }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--brand-color); color: var(--text-dark); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1.5rem; cursor: pointer; z-index: 3; opacity: 0.8; }
   .carousel-btn.prev { left: -48px; }
   .carousel-btn.next { right: -48px; }
+  body, .hero-content p, .cta-button, .product-card, .price, .add-to-cart, .about-content p, .learn-more { font-family: 'Poppins', sans-serif; }
+  .hero-content h1, .featured-products h2, .about-content h2 { font-family: 'Playfair Display', serif; }
 </style>
 
 <script>
-  const images = Array.from(document.querySelectorAll('.carousel-img'));
-  let current = 0;
-  let interval: any = null;
+  // --- LOGIKA UNTUK HERO CAROUSEL ---
+  const carouselImages = Array.from(document.querySelectorAll('.carousel-img'));
+  if (carouselImages.length > 0) {
+    let currentImageIndex = 0;
+    let autoSlideInterval = setInterval(showNextImage, 3000);
 
-  function updateCarousel() {
-    images.forEach((img, i) => {
-      img.classList.remove('active', 'peek-left', 'peek-right');
-      if (i === current) {
-        img.classList.add('active');
-      } else if (i === (current - 1 + images.length) % images.length) {
-        img.classList.add('peek-left');
-      } else if (i === (current + 1) % images.length) {
-        img.classList.add('peek-right');
-      }
+    function updateCarousel() {
+      carouselImages.forEach((img, i) => {
+        img.classList.remove('active', 'peek-left', 'peek-right');
+        if (i === currentImageIndex) {
+          img.classList.add('active');
+        } else if (i === (currentImageIndex - 1 + carouselImages.length) % carouselImages.length) {
+          img.classList.add('peek-left');
+        } else if (i === (currentImageIndex + 1) % carouselImages.length) {
+          img.classList.add('peek-right');
+        }
+      });
+    }
+
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+      updateCarousel();
+    }
+
+    function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
+      updateCarousel();
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(showNextImage, 3000);
+    }
+
+    document.querySelector('.carousel-btn.prev')?.addEventListener('click', () => {
+      showPrevImage();
+      resetAutoSlide();
     });
-  }
 
-  function nextImage() {
-    current = (current + 1) % images.length;
+    document.querySelector('.carousel-btn.next')?.addEventListener('click', () => {
+      showNextImage();
+      resetAutoSlide();
+    });
+
     updateCarousel();
   }
-  function prevImage() {
-    current = (current - 1 + images.length) % images.length;
-    updateCarousel();
+
+  // --- LOGIKA UNTUK KARTU PRODUK (HARGA DINAMIS) ---
+  function formatToRupiah(number) {
+    return 'Rp ' + new Intl.NumberFormat('id-ID').format(number);
   }
 
-  document.querySelector('.carousel-btn.prev')?.addEventListener('click', () => {
-    prevImage();
-    resetInterval();
-  });
-  document.querySelector('.carousel-btn.next')?.addEventListener('click', () => {
-    nextImage();
-    resetInterval();
-  });
+  // Ambil semua kartu produk
+  const productCards = document.querySelectorAll('.product-card');
 
-  function resetInterval() {
-    if (interval) clearInterval(interval);
-    interval = setInterval(nextImage, 3000);
-  }
+  // Loop setiap kartu untuk menambahkan logika
+  productCards.forEach(card => {
+    const priceElement = card.querySelector('.price');
+    const sizeButtons = card.querySelectorAll('.ml-button[data-ml]');
 
-  // Start auto-scroll
-  interval = setInterval(nextImage, 3000);
-  updateCarousel();
+    // Pastikan elemen harga ada
+    if (!priceElement) return;
+
+    // Tambahkan event 'click' untuk setiap tombol ukuran
+    sizeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Hapus kelas 'active' dari semua tombol di kartu ini
+        sizeButtons.forEach(btn => btn.classList.remove('active'));
+        // Tambahkan kelas 'active' ke tombol yang diklik
+        button.classList.add('active');
+
+        // Ambil ukuran dari atribut 'data-ml'
+        const selectedSize = button.getAttribute('data-ml');
+        
+        // Ambil harga dari atribut 'data-price-[ukuran]ml' pada kartu
+        const price = card.getAttribute(`data-price-${selectedSize}ml`);
+
+        // Jika harga ditemukan, perbarui teks pada elemen harga
+        if (price) {
+          priceElement.textContent = formatToRupiah(price);
+        }
+      });
+    });
+  });
 </script>
