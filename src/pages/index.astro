@@ -326,21 +326,25 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
   .hero-carousel {
     position: relative;
-    width: 320px;
+    width: 360px; /* only slightly wider than image */
     height: 480px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
   }
   .carousel-img {
     position: absolute;
+    left: 50%;
+    top: 0;
     width: 320px;
     height: 480px;
     object-fit: cover;
     border-radius: 20px 20px 40px 40px;
     box-shadow: 0 10px 30px rgba(34,34,34,0.10);
-    opacity: 0;
+    opacity: 0.5;
+    transform: translateX(-50%) scale(0.85);
     transition: opacity 0.5s, transform 0.5s;
     background: #F8F6F4;
     z-index: 1;
@@ -348,9 +352,17 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .carousel-img.active {
     opacity: 1;
     z-index: 2;
+    transform: translateX(-50%) scale(1);
   }
-  .carousel-img.zoomed {
-    transform: none;
+  .carousel-img.peek-left {
+    opacity: 0.7;
+    z-index: 1;
+    transform: translateX(-80%) scale(0.8); /* less peeking */
+  }
+  .carousel-img.peek-right {
+    opacity: 0.7;
+    z-index: 1;
+    transform: translateX(-20%) scale(0.8); /* less peeking */
   }
   .carousel-btn {
     position: absolute;
@@ -374,23 +386,45 @@ import Navbar from '../components/Navbar/Navbar.astro';
 <script>
   const images = Array.from(document.querySelectorAll('.carousel-img'));
   let current = 0;
+  let interval: any = null;
 
-  function showImage(idx) {
-    images.forEach((img, i) => img.classList.toggle('active', i === idx));
-  }
-
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      current = (current - 1 + images.length) % images.length;
-      showImage(current);
+  function updateCarousel() {
+    images.forEach((img, i) => {
+      img.classList.remove('active', 'peek-left', 'peek-right');
+      if (i === current) {
+        img.classList.add('active');
+      } else if (i === (current - 1 + images.length) % images.length) {
+        img.classList.add('peek-left');
+      } else if (i === (current + 1) % images.length) {
+        img.classList.add('peek-right');
+      }
     });
   }
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      current = (current + 1) % images.length;
-      showImage(current);
-    });
+
+  function nextImage() {
+    current = (current + 1) % images.length;
+    updateCarousel();
   }
+  function prevImage() {
+    current = (current - 1 + images.length) % images.length;
+    updateCarousel();
+  }
+
+  document.querySelector('.carousel-btn.prev')?.addEventListener('click', () => {
+    prevImage();
+    resetInterval();
+  });
+  document.querySelector('.carousel-btn.next')?.addEventListener('click', () => {
+    nextImage();
+    resetInterval();
+  });
+
+  function resetInterval() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(nextImage, 3000);
+  }
+
+  // Start auto-scroll
+  interval = setInterval(nextImage, 3000);
+  updateCarousel();
 </script>
