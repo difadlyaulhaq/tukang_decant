@@ -1,0 +1,124 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">tukangdecant</a>
+      <p class="footer-tagline">Easy access to premium, original perfumes in every size.</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="/" class="footer-link">Home</a>
+      <a href="/product" class="footer-link">Product</a>
+      <a href="/about" class="footer-link">About</a>
+      <a href="/contact" class="footer-link">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://instagram.com/tukangambunewangi" aria-label="Instagram" class="footer-social-link" target="_blank" rel="noopener noreferrer">
+        <svg width="24" height="24" fill="none" stroke="#BFA181" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@tukangambunewangi" aria-label="TikTok" class="footer-social-link" target="_blank" rel="noopener noreferrer">
+        <!-- TikTok SVG (official style, gold accent) -->
+        <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M33.5 6c.3 2.7 2.3 8.1 8.5 8.5v6.1c-2.1.2-6.1-.1-8.5-2.1v13.7c0 7.2-5.9 13-13.1 13-3.5 0-6.7-1.4-9.1-3.7C8.9 38.2 7.5 35 7.5 31.5c0-7.2 5.8-13 13-13 .5 0 1 .1 1.5.1v6.2c-.5-.1-1-.2-1.5-.2-3.7 0-6.7 3-6.7 6.7 0 1.8.7 3.5 2 4.7 1.2 1.2 2.9 2 4.7 2 3.7 0 6.7-3 6.7-6.7V6h6.4Z" fill="none" stroke="#BFA181" stroke-width="2"/></svg>
+      </a>
+      <a href="https://wa.me/6282279801135" aria-label="WhatsApp" class="footer-social-link" target="_blank" rel="noopener noreferrer">
+        <!-- WhatsApp SVG (centered phone, gold accent) -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#BFA181" stroke-width="2" fill="none"/>
+          <path d="M15.2 14.1c-.3-.2-1.1-.6-1.4-.7-.3-.1-.5-.1-.7.2-.2.3-.4.5-.7.5-.3 0-.6-.1-.9-.3-.7-.4-1.2-1-1.6-1.6-.2-.3-.2-.6.1-.8.2-.2.4-.5.4-.8 0-.2 0-.4-.1-.6-.1-.2-.5-1.1-.7-1.4-.2-.3-.4-.3-.7-.3h-.6c-.2 0-.5.1-.7.3-.2.2-.7.8-.7 2 0 1.2.7 2.2.8 2.4.1.2 1.6 2.5 3.8 3.3.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-.9.1-1-.1-.1-.2-.2-.5-.3z" stroke="#BFA181" stroke-width="1.5" fill="none"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {year} tukangdecant. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background: #222222;
+  color: #F8F6F4;
+  padding: 2.5rem 1rem 1rem 1rem;
+  border-top: 2px solid #BFA181;
+  font-family: 'Poppins', sans-serif;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.footer-brand {
+  flex: 1 1 220px;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: #BFA181;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.footer-tagline {
+  color: #F8F6F4;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+.footer-nav {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.footer-link {
+  color: #F8F6F4;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+.footer-link:hover {
+  color: #BFA181;
+}
+.footer-social {
+  flex: 1 1 120px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: background 0.3s;
+}
+.footer-social-link:hover {
+  background: #BFA18122;
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  color: #BFA181;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 700px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .footer-brand, .footer-nav, .footer-social {
+    flex: 1 1 100%;
+  }
+}
+</style> 
