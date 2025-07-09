@@ -379,12 +379,18 @@ import Navbar from '../components/Navbar/Navbar.astro';
     images.forEach((img, i) => img.classList.toggle('active', i === idx));
   }
 
-  document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-    current = (current - 1 + images.length) % images.length;
-    showImage(current);
-  });
-  document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-    current = (current + 1) % images.length;
-    showImage(current);
-  });
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
+  }
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+  }
 </script>
