@@ -131,7 +131,17 @@ import Navbar from '../components/Navbar/Navbar.astro';
     --text-light: #444444;
   }
   /* ... (Salin semua CSS Anda yang sudah ada di sini) ... */
-  .hero { background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-darker) 100%); padding: 6rem 2rem 4rem 2rem; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; min-height: 10vh; margin: 0 auto; gap: 4rem; }
+  .hero { 
+	background: linear-gradient(135deg, 
+	var(--bg-light) 0%, 
+	var(--bg-darker) 100%);
+	padding: 6rem 2rem 4rem 2rem; 
+	display: flex; align-items: center; 
+	justify-content: space-between; 
+	max-width: 1200px; min-height: 10vh;
+	 margin: 0 auto; gap: 4rem;
+	}
+	
   @media (max-width: 900px) { .hero { flex-direction: column; min-height: unset; gap: 2rem; padding: 3rem 1rem; } }
   .hero-content { flex: 1; }
   .hero-content h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
