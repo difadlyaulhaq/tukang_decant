@@ -1,7 +1,36 @@
 ---
-// product.astro
+// components/product/product.astro
 ---
 
-<div> 
-    ini product
+<div class="product-container">
+    <div class="product-content">
+        <h1>Ini Product</h1>
+        <p>Selamat datang di halaman produk kami!</p>
+    </div>
 </div>
+
+<style>
+    .product-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .product-content {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        color: #2d1b69;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
+    
+    p {
+        color: #666;
+        line-height: 1.6;
+    }
+</style>

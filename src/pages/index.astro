@@ -1,12 +1,13 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// pages/index.astro atau halaman utama Anda
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar/Navbar.astro';
 import Product from '../components/product/product.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Product />
+    <Navbar />
+    <main>
+        <Product />
+    </main>
 </Layout>

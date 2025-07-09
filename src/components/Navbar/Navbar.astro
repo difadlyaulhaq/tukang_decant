@@ -1,0 +1,318 @@
+---
+// components/Navbar.astro
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo/Brand -->
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">Brand</a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="navbar-menu">
+      <div class="navbar-item dropdown">
+        <button class="dropdown-btn">
+          Shipping
+          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="/shipping/domestic">Domestic Shipping</a>
+          <a href="/shipping/international">International Shipping</a>
+          <a href="/shipping/express">Express Delivery</a>
+        </div>
+      </div>
+
+      <div class="navbar-item dropdown">
+        <button class="dropdown-btn">
+          Tracking
+          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="/tracking/order">Track Order</a>
+          <a href="/tracking/status">Delivery Status</a>
+          <a href="/tracking/history">Shipping History</a>
+        </div>
+      </div>
+
+      <div class="navbar-item dropdown">
+        <button class="dropdown-btn">
+          Support
+          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="/support/help">Help Center</a>
+          <a href="/support/contact">Contact Us</a>
+          <a href="/support/faq">FAQ</a>
+        </div>
+      </div>
+
+      <div class="navbar-item dropdown">
+        <button class="dropdown-btn">
+          Account
+          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-content">
+          <a href="/account/profile">My Profile</a>
+          <a href="/account/orders">My Orders</a>
+          <a href="/account/settings">Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side Actions -->
+    <div class="navbar-actions">
+      <button class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+      </button>
+      
+      <div class="auth-section">
+        <button class="user-btn" aria-label="User menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+        <span class="auth-text">Sign In/Sign Up</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: linear-gradient(135deg, #2d1b69 0%, #4a148c 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .brand-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .brand-link:hover {
+    color: #e1bee7;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar-item {
+    position: relative;
+  }
+
+  .dropdown-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f5f5f5;
+  }
+
+  .dropdown-content a:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .dropdown-content a:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .search-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .auth-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .user-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .user-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .user-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .auth-text {
+    color: white;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0 15px;
+    }
+    
+    .navbar-menu {
+      gap: 1rem;
+    }
+    
+    .auth-text {
+      display: none;
+    }
+    
+    .dropdown-btn {
+      font-size: 0.9rem;
+      padding: 6px 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .navbar-menu {
+      display: none;
+    }
+    
+    .navbar-container {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target as Node)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  });
+
+  // Handle mobile menu toggle (if needed)
+  const searchBtn = document.querySelector('.search-btn');
+  searchBtn?.addEventListener('click', () => {
+    // Add search functionality here
+    console.log('Search clicked');
+  });
+
+  const userBtn = document.querySelector('.user-btn');
+  userBtn?.addEventListener('click', () => {
+    // Add user menu functionality here
+    console.log('User menu clicked');
+  });
+</script>
