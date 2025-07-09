@@ -75,13 +75,22 @@ import Navbar from '../components/Navbar/Navbar.astro';
 <style>
   .hero {
     background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
-    padding: 4rem 2rem;
+    padding: 6rem 2rem 4rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
+    min-height: 10vh;
     margin: 0 auto;
-    gap: 3rem;
+    gap: 4rem;
+  }
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      min-height: unset;
+      gap: 2rem;
+      padding: 3rem 1rem;
+    }
   }
 
   .hero-content {

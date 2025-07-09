@@ -1,0 +1,68 @@
+---
+---
+<main class="thanks-main">
+  <div class="thanks-card">
+    <h1>Thank You!</h1>
+    <p>Your message has been sent successfully.<br />We appreciate your feedback and will get back to you soon.</p>
+    <a href="/" class="thanks-home-btn">Back to Home</a>
+  </div>
+</main>
+
+<style>
+.thanks-main {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 4rem 1rem 2rem 1rem;
+  background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
+}
+.thanks-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(34,34,34,0.10);
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+.thanks-card h1 {
+  font-family: 'Playfair Display', serif;
+  color: #BFA181;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #BFA181;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+.thanks-card p {
+  color: #222;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+.thanks-home-btn {
+  background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+  color: #222;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.08);
+  display: inline-block;
+}
+.thanks-home-btn:hover {
+  background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+  color: #181818;
+}
+@media (max-width: 600px) {
+  .thanks-card {
+    padding: 2rem 0.7rem 1.5rem 0.7rem;
+  }
+}
+</style> 

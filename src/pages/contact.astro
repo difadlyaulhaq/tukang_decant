@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="contact-main">
+    <section class="contact-hero">
+      <h1>Contact Us</h1>
+      <p>Have a question, want to collaborate, or need help? Reach out to us via the form or contact info below.</p>
+    </section>
+
+    <section class="contact-content">
+      <div class="contact-form-section">
+        <h2>Send Us a Message</h2>
+        <form class="contact-form" action="https://formspree.io/f/mdkzrjqp" method="POST">
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <input type="hidden" name="_next" value="/thanks" />
+          <button type="submit" class="contact-btn">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info-section">
+        <h2>Contact Information</h2>
+        <ul class="contact-info-list">
+          <li><strong>Email:</strong> <a href="mailto:bonaventuraisaac52@gmail.com">bonaventuraisaac52@gmail.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/6282279801135" target="_blank" rel="noopener noreferrer">+62 822-7980-1135</a></li>
+          <li><strong>Location:</strong> Bandung, Indonesia</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+.contact-main {
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 2rem 1rem 3rem 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+.contact-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.contact-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #222222;
+  margin-bottom: 0.5rem;
+}
+.contact-hero p {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+.contact-content {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.contact-form-section, .contact-info-section {
+  flex: 1 1 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(34,34,34,0.08);
+  padding: 2rem 1.5rem;
+  min-width: 280px;
+}
+.contact-form-section h2, .contact-info-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: #BFA181;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #222;
+  font-size: 1rem;
+}
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #E3E3E3;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  background: #F8F6F4;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
+  transition: border 0.2s;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  border: 1.5px solid #BFA181;
+  outline: none;
+}
+.contact-btn {
+  background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
+  color: #222;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.08);
+}
+.contact-btn:hover {
+  background: linear-gradient(135deg, #C9B37E 0%, #BFA181 100%);
+  color: #181818;
+}
+.contact-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #222;
+  font-size: 1rem;
+}
+.contact-info-list li {
+  margin-bottom: 1rem;
+}
+.contact-info-list a {
+  color: #BFA181;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-info-list a:hover {
+  color: #222;
+  text-decoration: underline;
+}
+.contact-form-section * {
+  box-sizing: border-box;
+}
+.contact-form-section,
+.contact-form input,
+.contact-form textarea {
+  box-sizing: border-box;
+}
+@media (max-width: 700px) {
+  .contact-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .contact-form-section, .contact-info-section {
+    padding: 1.2rem 0.7rem;
+  }
+}
+</style> 
