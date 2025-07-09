@@ -31,31 +31,93 @@ import Navbar from '../components/Navbar/Navbar.astro';
 
     <!-- Featured Products -->
     <section class="featured-products">
-      <div class="container">
+    <div class="container">
         <h2>Featured Products</h2>
         <div class="products-grid">
-          <div class="product-card">
-            <div class="product-image"></div>
-            <h3>Elegant Rose</h3>
-            <p class="price">$89.99</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <div class="product-card">
-            <div class="product-image"></div>
-            <h3>Ocean Breeze</h3>
-            <p class="price">$79.99</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <div class="product-card">
-            <div class="product-image"></div>
-            <h3>Midnight Noir</h3>
-            <p class="price">$99.99</p>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/images/dreamscape.jpeg" alt="Creed Aventus Eau de Parfum for Men">
+                </div>
+                <div class="product-info">
+                    <p class="brand">dreamscape</p>
+                    <h3 class="product-name">dreamscape Eau de Parfum for Men</h3>
+                    <p class="price">$10.79</p>
+                    <div class="ml-options">
+                        <button class="ml-button" data-ml="2">2ml</button>
+                        <button class="ml-button" data-ml="3">3ml</button>
+                        <button class="ml-button" data-ml="5">5ml</button>
+                        <button class="ml-button" data-ml="10">10ml</button>
+                        <button class="ml-button more-options">+</button>
+                    </div>
+                    <div class="actions">
+                        <button class="add-to-cart">ADD TO CART</button>
+                        <div class="likes">
+                            ❤️ <span class="like-count">1376</span>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">100</span>)
+                    </div>
+                </div>
+            </div>
 
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/images/hawas-ice.jpg" alt="Parfums de Marly Layton Eau de Parfum for Men">
+                </div>
+                <div class="product-info">
+                    <p class="brand">Hawas Ice</p>
+                    <h3 class="product-name">Hawas Ice Eau de Parfum for Men</h3>
+                    <p class="price">$9.79</p>
+                    <div class="ml-options">
+                        <button class="ml-button" data-ml="2">2ml</button>
+                        <button class="ml-button" data-ml="3">3ml</button>
+                        <button class="ml-button" data-ml="5">5ml</button>
+                        <button class="ml-button" data-ml="10">10ml</button>
+                        <button class="ml-button more-options">+</button>
+                    </div>
+                    <div class="actions">
+                        <button class="add-to-cart">ADD TO CART</button>
+                        <div class="likes">
+                            ❤️ <span class="like-count">1723</span>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">97</span>)
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/images/fleur-blossom.jpg" alt="Maison Francis Kurkdjian Baccarat Rouge 540 Eau de Parfum Unisex">
+                </div>
+                <div class="product-info">
+                    <p class="brand">Fleur Blossom</p>
+                    <h3 class="product-name">Fleur Blossom Eau de Parfum For Women</h3>
+                    <p class="price">$13.79</p>
+                    <div class="ml-options">
+                        <button class="ml-button" data-ml="2">2ml</button>
+                        <button class="ml-button" data-ml="3">3ml</button>
+                        <button class="ml-button" data-ml="5">5ml</button>
+                        <button class="ml-button" data-ml="10">10ml</button>
+                        <button class="ml-button more-options">+</button>
+                    </div>
+                    <div class="actions">
+                        <button class="add-to-cart">ADD TO CART</button>
+                        <div class="likes">
+                            ❤️ <span class="like-count">1207</span>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span> (<span class="review-count">62</span>)
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
     <!-- About Preview -->
     <section class="about-preview">
       <div class="container">
@@ -173,36 +235,53 @@ import Navbar from '../components/Navbar/Navbar.astro';
     padding: 0 1rem;
   }
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
 
-  .product-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(34, 34, 34, 0.10);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #E3E3E3;
-  }
 
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(34, 34, 34, 0.15);
-    border-color: #BFA181;
-  }
+.product-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(191, 161, 129, 0.13);
+  border: 1.5px solid #f0e8dd;
+  transition: transform 0.22s, box-shadow 0.22s, border 0.22s;
+  position: relative;
+  overflow: hidden;
+}
 
-  .product-image {
-    width: 120px;
-    height: 180px;
-    background: linear-gradient(135deg, #F8F6F4 0%, #E3E3E3 100%);
-    border-radius: 15px 15px 30px 30px;
-    margin: 0 auto 1rem;
-    border: 2px solid #BFA181;
-  }
+.product-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 18px 48px rgba(191, 161, 129, 0.19);
+  border-color: #e5d3b3;
+}
+.product-card:hover .product-image img {
+  transform: scale(1.07) rotate(-2deg);
+}
+ .product-image {
+  width: 120px;
+  height: 180px;
+  margin: 0 auto 1.2rem;
+  border-radius: 18px 18px 32px 32px;
+  background: linear-gradient(135deg, #f8f6f4 0%, #e3e3e3 100%);
+  border: 2px solid #e5d3b3;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+	.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 16px rgba(191,161,129,0.08);
+}
 
   .product-card h3 {
     color: #222222;
@@ -216,6 +295,99 @@ import Navbar from '../components/Navbar/Navbar.astro';
     color: #BFA181;
     margin-bottom: 1rem;
   }
+  .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3em 0.9em;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(191,161,129,0.12);
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.product-info .brand {
+  color: #bfa181;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
+}
+
+.product-card h3 {
+  color: #222;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #bfa181;
+  margin-bottom: 1rem;
+}
+
+.ml-options {
+  margin-bottom: 1rem;
+}
+
+.ml-button {
+  background: #f8f6f4;
+  color: #bfa181;
+  border: 1px solid #e5d3b3;
+  border-radius: 6px;
+  padding: 0.3em 0.9em;
+  margin: 0 0.15em;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.ml-button.active,
+.ml-button:hover {
+  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
+  color: #fff;
+  border-color: #bfa181;
+}
+
+.add-to-cart {
+  background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(191, 161, 129, 0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.add-to-cart:hover {
+  background: linear-gradient(90deg, #c9b37e 60%, #bfa181 100%);
+  color: #222;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.likes {
+  margin-top: 0.5rem;
+  color: #bfa181;
+  font-size: 1rem;
+}
+
+.rating {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #f5b041;
+  font-weight: 600;
+}
 
   .add-to-cart {
     background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%);
