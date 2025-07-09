@@ -6,70 +6,51 @@
   <div class="navbar-container">
     <!-- Logo/Brand -->
     <div class="navbar-brand">
-      <a href="/" class="brand-link">Brand</a>
+      <a href="/" class="brand-link">PerfumeStore</a>
     </div>
 
     <!-- Navigation Menu -->
     <div class="navbar-menu">
-      <div class="navbar-item dropdown">
-        <button class="dropdown-btn">
-          Shipping
-          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6,9 12,15 18,9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-content">
-          <a href="/shipping/domestic">Domestic Shipping</a>
-          <a href="/shipping/international">International Shipping</a>
-          <a href="/shipping/express">Express Delivery</a>
-        </div>
+      <div class="navbar-item">
+        <a href="/" class="nav-link">Home</a>
       </div>
 
       <div class="navbar-item dropdown">
         <button class="dropdown-btn">
-          Tracking
+          Product
           <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6,9 12,15 18,9"></polyline>
           </svg>
         </button>
         <div class="dropdown-content">
-          <a href="/tracking/order">Track Order</a>
-          <a href="/tracking/status">Delivery Status</a>
-          <a href="/tracking/history">Shipping History</a>
+          <a href="/product/men">Men's Perfume</a>
+          <a href="/product/women">Women's Perfume</a>
+          <a href="/product/unisex">Unisex Perfume</a>
+          <a href="/product/gift-sets">Gift Sets</a>
         </div>
       </div>
 
-      <div class="navbar-item dropdown">
-        <button class="dropdown-btn">
-          Support
-          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6,9 12,15 18,9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-content">
-          <a href="/support/help">Help Center</a>
-          <a href="/support/contact">Contact Us</a>
-          <a href="/support/faq">FAQ</a>
-        </div>
+      <div class="navbar-item">
+        <a href="/about" class="nav-link">About</a>
       </div>
 
-      <div class="navbar-item dropdown">
-        <button class="dropdown-btn">
-          Account
-          <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6,9 12,15 18,9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-content">
-          <a href="/account/profile">My Profile</a>
-          <a href="/account/orders">My Orders</a>
-          <a href="/account/settings">Settings</a>
-        </div>
+      <div class="navbar-item">
+        <a href="/contact" class="nav-link">Contact</a>
       </div>
     </div>
 
     <!-- Right Side Actions -->
     <div class="navbar-actions">
+      <!-- Shopping Cart Icon -->
+      <button class="cart-btn" aria-label="Shopping Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count">0</span>
+      </button>
+      
       <button class="search-btn" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
@@ -205,6 +186,55 @@
     border-radius: 0 0 8px 8px;
   }
 
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    display: block;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cart-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    position: relative;
+  }
+
+  .cart-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cart-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+
   .navbar-actions {
     display: flex;
     align-items: center;
@@ -228,12 +258,6 @@
   .search-btn svg {
     width: 20px;
     height: 20px;
-  }
-
-  .auth-section {
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .user-btn {
