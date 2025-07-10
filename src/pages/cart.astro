@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
     const cartList = document.querySelector('.cart-list');
     if (!cartList) return;
     if (!cart.length) {
-      cartList.innerHTML = '<p>Your cart is currently empty.</p><a href="/product" class="cart-shop-btn">Continue Shopping</a>';
+      cartList.innerHTML = '<p>Your cart is currently empty.</p><a href="/product/all" class="cart-shop-btn">Continue Shopping</a>';
       return;
     }
     let html = `<form id="cart-form"><table class="cart-table"><thead><tr><th></th><th>Preview</th><th>Product</th><th>ML</th><th>Price</th><th>Qty</th><th>Subtotal</th><th>Delete</th></tr></thead><tbody>`;
