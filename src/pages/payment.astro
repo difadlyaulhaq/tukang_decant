@@ -359,9 +359,9 @@ import Footer from '../components/Footer.astro';
 
         const whatsappNumber = '6282279801135';
         const message = `Halo, saya ingin konfirmasi pembayaran untuk Tukang Decant.
-Jumlah: *Rp ${parseInt(amount).toLocaleString('id-ID')}*
+        Jumlah: *Rp ${parseInt(amount).toLocaleString('id-ID')}*
 
-Terima kasih! 🙏`;
+        Terima kasih!`  ;
 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
