@@ -26,7 +26,7 @@ const products = await pb.collection('products').getFullList({
             return (
               <div 
                 class="product-card" 
-                // --- PERUBAHAN PENTING 2 ---
+                // PERUBAHAN PENTING 2 
                 // Sertakan ID produk dan URL gambar yang benar
                 data-product={JSON.stringify({
                   id: product.id, // Tambahkan ID untuk referensi unik
@@ -51,12 +51,12 @@ const products = await pb.collection('products').getFullList({
                   </div>
                   <div class="actions">
                     <button class="add-to-cart">ADD TO CART</button>
-                    <div class="likes">❤️ <span class="like-count">{product.likes}</span></div>
+                    {/* <div class="likes">❤️ <span class="like-count">{product.likes}</span></div> */}
                   </div>
-                  <div class="rating">
+                  {/* <div class="rating">
                     <span class="stars">{'⭐'.repeat(product.rating)}</span>
                     <span class="review-count">({product.reviews})</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             )
