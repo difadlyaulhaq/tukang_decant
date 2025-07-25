@@ -32,7 +32,7 @@ import Navbar from '../components/Navbar/Navbar.astro';
   .cart-checkout-btn, .cart-shop-btn { 
     background: linear-gradient(135deg, #BFA181 0%, #C9B37E 100%); 
     color: #fff; 
-    border: none; 
+    border: none;
     padding: 0.8rem 1.5rem; 
     border-radius: 8px; 
     cursor: pointer; 
@@ -112,7 +112,7 @@ function initializeCartPage() {
            typeof item.image === 'string' &&
            typeof item.quantity === 'number' &&
            item.quantity > 0;
-    
+
     if (!isValid) {
       console.log('Invalid item detected:', item);
       console.log('Item validation details:', {
@@ -134,7 +134,7 @@ function initializeCartPage() {
 
   function renderCart() {
     if (!cartContainer) return;
-    
+
     try {
       const itemsArray = getCartItemsArray();
       console.log('Raw items from store:', itemsArray);
