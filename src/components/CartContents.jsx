@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
 // Impor store dan fungsi-fungsi dari cartStore
 import * as cartStore from '../stores/cartStore.js';
+// Tambahkan fungsi ini di dalam function CartContents()
 
 // Helper untuk format Rupiah
 const formatToRupiah = (number) => 'Rp ' + Number(number).toLocaleString('id-ID');
 
 export default function CartContents() {
+const handleCheckout = () => {
+  // Simpan total harga (subtotal) ke localStorage
+  // localStorage.setItem('checkoutTotal', subtotal);
+  // Arahkan pengguna ke halaman pembayaran
+  window.location.href = '/payment';
+};
   // Langganan ke perubahan di 'cart' store
   const $cart = useStore(cartStore.cart);
   const [isClient, setIsClient] = useState(false);
@@ -81,7 +88,9 @@ export default function CartContents() {
           <span>Total</span>
           <span>{formatToRupiah(subtotal)}</span>
         </div>
-        <button style={styles.checkoutButton}>Lanjutkan ke Pembayaran</button>
+        <button style={styles.checkoutButton} onClick={handleCheckout}>
+          Lanjutkan ke Pembayaran
+        </button>
       </div>
     </div>
   );
