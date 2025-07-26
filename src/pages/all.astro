@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar/Navbar.astro';
+import { pb } from '../lib/pocketbase.js';
+// PERUBAHAN 1: Struktur data produk diubah total untuk mendukung desain kartu baru.
+// Sekarang menyertakan harga per ukuran, jumlah suka, dan ulasan.
+const products = await pb.collection('products').getFullList({
+    sort: '-created',
+});
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <section class="all-products">
+      <div class="container">
+        <h2>Semua Koleksi Decant</h2>
+        <p class="section-subtitle">Pilih ukuran dan temukan aroma parfum premium favoritmu.</p>
+        
+        <div class="products-grid">
+          {products.map(product => {
+            // --- PERUBAHAN PENTING 1 ---
+            // Dapatkan URL gambar yang benar dari PocketBase
+            const imageUrl = pb.files.getUrl(product, product.image);
+
+            return (
+              <div 
+                class="product-card" 
+                // PERUBAHAN PENTING 2 
+                // Sertakan ID produk dan URL gambar yang benar
+                data-product={JSON.stringify({
+                  id: product.id, // Tambahkan ID untuk referensi unik
+                  brand: product.brand,
+                  name: product.name,
+                  image: imageUrl, // Gunakan URL dari PocketBase
+                  prices: product.prices
+                })}
+              >
+                <div class="product-image">
+                  {/* Gunakan URL gambar dari PocketBase */}
+                  <img src={imageUrl} alt={product.brand} />
+                </div>
+                <div class="product-info">
+                  <p class="brand">{product.brand}</p>
+                  <h3 class="product-name">{product.name}</h3>
+                  <p class="price">Rp {product.prices[2].toLocaleString('id-ID')}</p>
+                  <div class="ml-options">
+                    <button class="ml-button active" data-ml="2">2ml</button>
+                    <button class="ml-button" data-ml="5">5ml</button>
+                    <button class="ml-button" data-ml="10">10ml</button>
+                  </div>
+                  <div class="actions">
+                    <button class="add-to-cart">ADD TO CART</button>
+                    {/* <div class="likes">❤️ <span class="like-count">{product.likes}</span></div> */}
+                  </div>
+                  {/* <div class="rating">
+                    <span class="stars">{'⭐'.repeat(product.rating)}</span>
+                    <span class="review-count">({product.reviews})</span>
+                  </div> */}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .all-products { padding: 4rem 2rem; background: #F8F6F4; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .all-products h2 { text-align: center; font-size: 2.5rem; color: #222; margin-bottom: 1rem; font-family: 'Playfair Display', serif; }
+  .section-subtitle { text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem; font-family: 'Poppins', sans-serif; }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+  .product-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(191, 161, 129, 0.13);
+    border: 1.5px solid #f0e8dd;
+    transition: transform 0.22s, box-shadow 0.22s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:hover { transform: translateY(-10px); box-shadow: 0 18px 48px rgba(191, 161, 129, 0.19); }
+  .product-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f8f6f4 0%, #e3e3e3 100%);
+  }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; }
+  .product-info { padding: 1.5rem; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
+  .brand { color: #bfa181; font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; letter-spacing: 0.5px; }
+  .product-name { color: #222; margin-bottom: 1rem; font-size: 1.15rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+  .price { font-size: 1.3rem; font-weight: bold; color: #bfa181; margin-bottom: 1rem; }
+  .ml-options { margin-bottom: 1.5rem; }
+  .ml-button { background: #f8f6f4; color: #bfa181; border: 1px solid #e5d3b3; border-radius: 6px; padding: 0.3em 0.9em; margin: 0 0.15em; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .ml-button.active, .ml-button:hover { background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%); color: #fff; border-color: #bfa181; }
+  .actions { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: auto; }
+  .add-to-cart { background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%); color: #fff; border: none; padding: 0.7rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+  .add-to-cart:hover { transform: translateY(-2px); }
+  .likes { color: #bfa181; font-size: 1rem; display: flex; align-items: center; }
+  .rating { margin-top: 1rem; font-size: 1rem; color: #f5b041; }
+  .review-count { color: #888; margin-left: 0.5rem; }
+</style>
+
+<script>
+  import { addItemToCart } from '../stores/cartStore.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    function formatToRupiah(number: number): string {
+      return 'Rp ' + Number(number).toLocaleString('id-ID');
+    }
+
+    const productCards = document.querySelectorAll<HTMLElement>('.product-card');
+
+    productCards.forEach(card => {
+      const priceElement = card.querySelector<HTMLElement>('.price');
+      const sizeButtons = card.querySelectorAll<HTMLButtonElement>('.ml-button');
+      const addToCartButton = card.querySelector<HTMLButtonElement>('.add-to-cart');
+      
+      // Get product data from JSON
+      const productDataString = card.dataset.product;
+      if (!productDataString) {
+        console.error('Product data not found');
+        return;
+      }
+      
+      let productData;
+      try {
+        productData = JSON.parse(productDataString);
+      } catch (error) {
+        console.error('Error parsing product data:', error);
+        return;
+      }
+
+      if (priceElement) {
+        sizeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const selectedSize = button.dataset.ml;
+            if (selectedSize && productData.prices[selectedSize]) {
+              const price = productData.prices[selectedSize];
+              priceElement.textContent = formatToRupiah(price);
+            }
+          });
+        });
+      }
+
+      if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+          const activeSizeButton = card.querySelector<HTMLButtonElement>('.ml-button.active');
+          
+          if (!activeSizeButton) {
+            alert("Silakan pilih ukuran terlebih dahulu!");
+            return;
+          }
+
+          const size = activeSizeButton.dataset.ml;
+          
+          if (!size || !productData.prices[size]) {
+            console.error("Size atau harga tidak ditemukan");
+            alert("Terjadi kesalahan, coba lagi.");
+            return;
+          }
+
+          const itemToAdd = {
+            brand: productData.brand,
+            name: productData.name,
+            image: productData.image,
+            size: parseInt(size, 10),
+            price: productData.prices[size]
+          };
+
+          console.log('Adding item to cart:', itemToAdd);
+
+          try {
+            addItemToCart(itemToAdd);
+            
+            // Feedback visual
+            const originalText = addToCartButton.textContent;
+            addToCartButton.textContent = 'Ditambahkan!';
+            addToCartButton.style.background = '#22c55e';
+            addToCartButton.disabled = true;
+
+            setTimeout(() => {
+              if (originalText) {
+                addToCartButton.textContent = originalText;
+              }
+              addToCartButton.style.background = '';
+              addToCartButton.disabled = false;
+            }, 1200);
+          } catch (error) {
+            console.error('Error adding item to cart:', error);
+            alert("Terjadi kesalahan saat menambahkan ke keranjang.");
+          }
+        });
+      }
+    });
+  });
+</script>

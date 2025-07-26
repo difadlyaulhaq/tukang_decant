@@ -1,1 +1,42 @@
-halo
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar/Navbar.astro';
+import { pb } from '../../lib/pocketbase.js';
+
+// Ambil produk yang HANYA untuk kategori "men"
+const mensProducts = await pb.collection('products').getFullList({
+  filter: 'category = "men"',
+});
+---
+
+<Layout title="Parfum Pria - tukangdecant">
+  <Navbar />
+  <main>
+    <section class="category-page">
+      <div class="container">
+        <h2>Koleksi Parfum Pria</h2>
+        <p class="section-subtitle">Aroma maskulin pilihan untuk setiap kesempatan.</p>
+        
+        <ProductGrid products={mensProducts} />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .category-page { padding: 4rem 2rem; background: #F8F6F4; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+  }
+  .section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+</style>
