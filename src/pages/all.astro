@@ -26,8 +26,6 @@ const products = await pb.collection('products').getFullList({
             return (
               <div 
                 class="product-card" 
-                // PERUBAHAN PENTING 2 
-                // Sertakan ID produk dan URL gambar yang benar
                 data-product={JSON.stringify({
                   id: product.id, // Tambahkan ID untuk referensi unik
                   brand: product.brand,
