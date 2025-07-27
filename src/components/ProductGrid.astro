@@ -1,0 +1,239 @@
+---
+// src/components/ProductGrid.astro
+
+// Komponen ini akan menerima 'products' sebagai properti (prop)
+const { products } = Astro.props;
+
+// Impor pb untuk mendapatkan URL gambar
+import { pb } from '../lib/pocketbase.js';
+---
+
+<div class="products-grid">
+  {products.map(product => {
+    //[cite_start]// Dapatkan URL gambar yang benar dari PocketBase [cite: 205]
+    const imageUrl = pb.files.getURL(product, product.image);
+
+    return (
+      <div 
+        class="product-card" 
+        data-product={JSON.stringify({
+          id: product.id,
+          brand: product.brand,
+          name: product.name,
+          image: imageUrl,
+          prices: product.prices
+        })}
+      >
+        <div class="product-image">
+          <img src={imageUrl} alt={product.brand} />
+        </div>
+        <div class="product-info">
+          <p class="brand">{product.brand}</p>
+          <h3 class="product-name">{product.name}</h3>
+          {/* Menampilkan harga default (misal untuk 2ml) */}
+          <p class="price">Rp {product.prices[2].toLocaleString('id-ID')}</p>
+          <div class="ml-options">
+            <button class="ml-button active" data-ml="2">2ml</button>
+            <button class="ml-button" data-ml="5">5ml</button>
+            <button class="ml-button" data-ml="10">10ml</button>
+          </div>
+          <div class="actions">
+            <button class="add-to-cart">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    )
+  })}
+</div>
+
+<style>
+  /* Gaya ini disalin dari all.astro agar konsisten */
+  .products-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2.5rem;  
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(191, 161, 129, 0.13);
+    border: 1.5px solid #f0e8dd;
+    transition: transform 0.22s, box-shadow 0.22s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:hover { 
+    transform: translateY(-10px);
+    box-shadow: 0 18px 48px rgba(191, 161, 129, 0.19); 
+  }
+  .product-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f8f6f4 0%, #e3e3e3 100%);
+  }
+  .product-image img { 
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+  }
+  .product-info { 
+    padding: 1.5rem; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1;
+  }
+  .brand { 
+    color: #bfa181; 
+    font-weight: 600; 
+    font-size: 1rem; 
+    margin-bottom: 0.2rem; 
+    letter-spacing: 0.5px;
+  }
+  .product-name { 
+    color: #222; 
+    margin-bottom: 1rem; 
+    font-size: 1.15rem; 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+  }
+  .price { 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: #bfa181; 
+    margin-bottom: 1rem;
+  }
+  .ml-options { 
+    margin-bottom: 1.5rem; 
+  }
+  .ml-button { 
+    background: #f8f6f4; 
+    color: #bfa181;
+    border: 1px solid #e5d3b3; 
+    border-radius: 6px; 
+    padding: 0.3em 0.9em; 
+    margin: 0 0.15em; 
+    font-size: 0.95rem; 
+    font-weight: 500; 
+    cursor: pointer;
+    transition: all 0.2s; 
+  }
+  .ml-button.active, .ml-button:hover { 
+    background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%); 
+    color: #fff; 
+    border-color: #bfa181;
+  }
+  .actions { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1rem; 
+    margin-top: auto;
+  }
+  .add-to-cart { 
+    background: linear-gradient(90deg, #bfa181 60%, #c9b37e 100%); 
+    color: #fff; 
+    border: none; 
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    transition: all 0.2s; 
+  }
+  .add-to-cart:hover { 
+    transform: translateY(-2px);
+  }
+</style>
+<script>
+  // Script ini juga disalin dari all.astro agar berfungsi sama
+  import { addItemToCart } from '../stores/cartStore.js';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    function formatToRupiah(number) {
+      return 'Rp ' + Number(number).toLocaleString('id-ID');
+    }
+
+    // FIX: Specify that we are selecting HTMLElements
+    const productCards = document.querySelectorAll<HTMLElement>('.product-card');
+
+    productCards.forEach(card => {
+      // FIX: Specify the element types
+      const priceElement = card.querySelector<HTMLElement>('.price');
+      const sizeButtons = card.querySelectorAll<HTMLButtonElement>('.ml-button');
+      const addToCartButton = card.querySelector<HTMLButtonElement>('.add-to-cart');
+      
+      const productDataString = card.dataset.product;
+      if (!productDataString) {
+        console.error('Product data not found');
+        return;
+      }
+      
+      let productData;
+      try {
+        productData = JSON.parse(productDataString);
+      } catch (error) {
+        console.error('Error parsing product data:', error);
+        return;
+      }
+
+      if (priceElement) {
+        sizeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            sizeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const selectedSize = button.dataset.ml;
+            if (selectedSize && productData.prices[selectedSize]) {
+              const price = productData.prices[selectedSize];
+              priceElement.textContent = formatToRupiah(price);
+            }
+          });
+        });
+      }
+
+      if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+          const activeSizeButton = card.querySelector<HTMLButtonElement>('.ml-button.active');
+          if (!activeSizeButton) {
+            alert("Silakan pilih ukuran terlebih dahulu!");
+            return;
+          }
+          const size = activeSizeButton.dataset.ml;
+          
+          if (!size || !productData.prices[size]) {
+            console.error("Size atau harga tidak ditemukan");
+            alert("Terjadi kesalahan, coba lagi.");
+            return;
+          }
+
+          const itemToAdd = {
+            id: productData.id,
+            brand: productData.brand,
+            name: productData.name,
+            image: productData.image,
+            size: parseInt(size, 10),
+            price: productData.prices[size]
+          };
+
+          addItemToCart(itemToAdd);
+          
+          const originalText = addToCartButton.textContent;
+          // No more errors here because TypeScript knows this is a button
+          addToCartButton.textContent = 'Ditambahkan!';
+          addToCartButton.style.background = '#22c55e';
+          addToCartButton.disabled = true;
+
+          setTimeout(() => {
+            if (originalText) {
+              addToCartButton.textContent = originalText;
+            }
+            addToCartButton.style.background = '';
+            addToCartButton.disabled = false;
+          }, 1200);
+        });
+      }
+    });
+  });
+</script>

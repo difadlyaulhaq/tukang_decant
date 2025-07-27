@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar/Navbar.astro';
 import { pb } from '../../lib/pocketbase.js';
+// Add this import statement
+import ProductGrid from '../../components/ProductGrid.astro'; 
 
 // Ambil produk yang HANYA untuk kategori "men"
 const mensProducts = await pb.collection('products').getFullList({
@@ -17,6 +19,7 @@ const mensProducts = await pb.collection('products').getFullList({
         <h2>Koleksi Parfum Pria</h2>
         <p class="section-subtitle">Aroma maskulin pilihan untuk setiap kesempatan.</p>
         
+        {/* This will now work correctly */}
         <ProductGrid products={mensProducts} />
       </div>
     </section>
